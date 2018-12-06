@@ -18,3 +18,44 @@ class Solution(object):
                 result += 1
             last_diff = cur_diff
         return result if result == 1 and not last_diff else result + 1
+
+    def wiggleMaxLength2(self, nums):
+        """
+        Linear Dynamic Programming [Accepted]
+        Time complexity: O(n)
+        Space complexity: O(n)
+        """
+        length = len(nums)
+        if length < 2:
+            return length
+        up = [1]
+        down = [1]
+        for i in range(1, length):
+            if nums[i] > nums[i-1]:
+                up.append(down[i-1] + 1)
+                down.append(down[i-1])
+            elif nums[i] < nums[i-1]:
+                up.append(up[i-1])
+                down.append(up[i-1] + 1)
+            else:
+                up.append(up[i-1])
+                down.append(down[i-1])
+        return max(up[-1], down[-1])
+
+    def wiggleMaxLength2(self, nums):
+        """
+        Linear Dynamic Programming [Accepted]
+        Time complexity: O(n)
+        Space complexity: O(1)
+        """
+        length = len(nums)
+        if length < 2:
+            return length
+        up = 1
+        down = 1
+        for i in range(1, length):
+            if nums[i] > nums[i-1]:
+                up = down + 1
+            elif nums[i] < nums[i-1]:
+                down = up + 1
+        return max(up, down)
