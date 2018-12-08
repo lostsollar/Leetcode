@@ -42,7 +42,7 @@ class Solution(object):
                 down.append(down[i-1])
         return max(up[-1], down[-1])
 
-    def wiggleMaxLength2(self, nums):
+    def wiggleMaxLength3(self, nums):
         """
         Linear Dynamic Programming [Accepted]
         Time complexity: O(n)
@@ -59,3 +59,21 @@ class Solution(object):
             elif nums[i] < nums[i-1]:
                 down = up + 1
         return max(up, down)
+
+    def wiggle_max_length5(nums):
+        """
+        Greedy, this solution is same with mine [Accepted]
+        Time complexity: O(n)
+        Space complexity: O(1)
+        """
+        length = len(nums)
+        if length < 2:
+            return length
+        pre_diff = nums[1] - nums[0]
+        count = 1 if pre_diff == 0 else 2
+        for i in range(1, length):
+            diff = nums[i] - nums[i-1]
+            if (diff > 0 >= pre_diff) or (diff < 0 <= pre_diff):
+                count += 1
+                pre_diff = diff
+        return count
