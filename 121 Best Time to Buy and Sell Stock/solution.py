@@ -21,7 +21,7 @@ def maxProfit1(prices):
 
 def maxProfit2(prices):
     """
-    Solution2: DP(my own) [Accepted]
+    Solution2: my own [Accepted]
     Time Complexity: O(n)
     Space Complexity: O(1)
     :param prices:
