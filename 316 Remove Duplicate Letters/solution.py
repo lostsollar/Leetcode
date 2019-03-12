@@ -62,6 +62,5 @@ if __name__ == "__main__":
     test2 = "bcabc"
     test3 = "cbacdcbc"
     tests = [test1, test2, test3]
-
     # check_solution(remove_duplication_letters1, tests)
     check_solution(remove_duplication_letters2, tests, -1)
