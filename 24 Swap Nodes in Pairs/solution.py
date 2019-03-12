@@ -20,9 +20,11 @@ class Solution(object):
             p_next = p_cur.next
             if p_prev:
                 p_prev.next = p_cur.next
-            p_cur.next = p_next.next
-            p_next.next = p_cur
-            p_prev = p_cur
+            # p_cur.next = p_next.next
+            # p_next.next = p_cur
+            # p_prev = p_cur
+            # the same as above three line
+            p_cur.next, p_next.next, p_prev = p_next.next, p_cur, p_cur
             p_cur = p_cur.next
         return new_head
 
@@ -33,7 +35,9 @@ class Solution(object):
         while pre.next and pre.next.next:
             a = pre.next
             b = a.next
-            pre.next, b.next, a.next = b, a, b.next
+            a.next, b.next, pre.next = b.next, a, b
+            # the same as above line
+            # pre.next, b.next, a.next = b, a, b.next
             pre = a
         return self.next
 
