@@ -30,9 +30,8 @@ class Solution(object):
         """
         cur_max = 0
         for i in range(len(nums)):
-            cur_max = max(cur_max, nums[i] + i)
-            if cur_max < i:
-                break
+            if cur_max >= i:
+                cur_max = max(cur_max, nums[i] + i)
         return cur_max >= len(nums) - 1
 
     def canJump(self, nums):
@@ -52,7 +51,7 @@ test = [2, 3, 1, 1, 4]
 test1 = [3, 2, 1, 0, 4]
 test2 = [0]
 checker = Solution()
-print checker.canJump1(test2)
+print checker.canJump1(test1)
 
 
 
