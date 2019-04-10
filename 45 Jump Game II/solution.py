@@ -1,4 +1,8 @@
+# -*- coding: utf-8 -*-
+
+
 class Solution(object):
+
     def jump(self, nums):
         """
         :type nums: List[int]
@@ -13,3 +17,33 @@ class Solution(object):
                 curReach = curMax
             curMax = max(nums[i] + i, curMax)
         return jumps
+
+
+checker = Solution()
+test = [2, 3, 1, 1, 4]
+print checker.jump(test)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
