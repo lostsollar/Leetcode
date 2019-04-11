@@ -38,3 +38,6 @@ class Solution(object):
                         queue.append(queue[0].right)
                     del queue[0]
         return level
+
+    def maxDepth2(self, root):
+        return 0 if root is None else 1 + max(self.maxDepth2(root.left), self.maxDepth2(root.right))
