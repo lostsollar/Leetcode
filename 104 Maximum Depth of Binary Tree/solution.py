@@ -31,8 +31,7 @@ class Solution(object):
             queue = [root]
             while queue:
                 level += 1
-                counter = len(queue)
-                for _ in range(counter):
+                for _ in range(len(queue)):
                     if queue[0].left:
                         queue.append(queue[0].left)
                     if queue[0].right:
