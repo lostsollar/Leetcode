@@ -18,3 +18,24 @@ class Solution(object):
         left = self.maxDepth(root.left)
         right = self.maxDepth(root.right)
         return left + 1 if left > right else right + 1
+
+    def maxDepth1(self, root):
+        """
+        BFS: My own solution
+        reference: https://time.geekbang.org/course/detail/130-67635
+        :param root: TreeNode
+        :return: int
+        """
+        level = 0
+        if root:
+            queue = [root]
+            while queue:
+                level += 1
+                counter = len(queue)
+                for _ in range(counter):
+                    if queue[0].left:
+                        queue.append(queue[0].left)
+                    if queue[0].right:
+                        queue.append(queue[0].right)
+                    del queue[0]
+        return level
