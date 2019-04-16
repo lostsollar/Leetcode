@@ -21,7 +21,7 @@ class Solution(object):
 
     def exist(self, board, word):
         """
-        My own solution
+        My own solution: DFS
         需要增加一个二维数组记录已访问过的节点
         :type board: List[List[str]]
         :type word: str
