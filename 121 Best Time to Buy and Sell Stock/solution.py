@@ -39,6 +39,24 @@ def maxProfit2(prices):
     return dp
 
 
+def maxProfit3(prices):
+    # https://time.geekbang.org/course/detail/130-69782
+    if not prices:
+        return 0
+    res = 0
+    profit = [[0 for _ in range(3)] for _ in range(len(prices))]
+    profit[0][0], profit[0][1], profit[0][2] = 0, -prices[0], 0
+    for i in range(1, len(prices)):
+        # 没有买入股票
+        profit[i][0] = profit[i-1][0]
+        # 现在持有一股股票, 还没有卖
+        profit[i][1] = max(profit[i-1][0]-prices[i], profit[i-1][1])
+        # 持有一股股票，买了
+        profit[i][2] = profit[i-1][1] + prices[i]
+        res = max(res, profit[i][0], profit[i][1], profit[i][2])
+    return res
+
+
 def check_result(func, tests, index=None):
     if index:
         print tests[index]
@@ -57,3 +75,4 @@ if __name__ == '__main__':
     tests = [test1, test2]
     check_result(maxProfit1, tests)
     check_result(maxProfit2, tests)
+    check_result(maxProfit3, tests)
